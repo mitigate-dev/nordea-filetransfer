@@ -4,6 +4,8 @@ require File.expand_path('../lib/nordea/file_transfer/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Edgars Beigarts"]
   gem.email         = ["edgars.beigarts@makit.lv"]
+  gem.summary       = "Ruby client for Nordea FileTransfer Web Services"
+  gem.description   = gem.summary
 
   gem.files         = Dir.glob("lib/**/*") + %w(README.md LICENSE)
   gem.test_files    = Dir.glob("spec/**/*")

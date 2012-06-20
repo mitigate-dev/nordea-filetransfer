@@ -13,8 +13,9 @@ require "noredea/file_transfer"
 
 client = Nordea::FileTransfer::Client.new(
   :cert_file => "path/to/cert.pem",
-  :private_key_path => "path/to/key.pem"
+  :private_key_file => "path/to/key.pem"
 )
+
 response = client.request(:get_user_info) do |r|
   r.request_header.attributes = {
     :sender_id   => 11111111,
