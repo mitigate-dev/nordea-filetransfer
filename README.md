@@ -1,5 +1,32 @@
 # Ruby client for Nordea FileTransfer
 
+```
+         Payload                ApplicationRequest           SOAP Envelope
+   +-------------------+     +---------------------+     +--------------------+
+ C |                   |     |                     |     |                    |
+ O |   Content         |     |   Customer ID       |     |    SOAP Header     |
+ R |                   |     |   Timestamp         |     | +----------------+ |
+ P |                   |     |   Environment       |     | | Signature      | |
+ O |                   |     |   Target ID         |     | | ...            | |
+ R |                   |     |   Encryption        |     | +----------------+ |
+ A |                   |     |   Compression       |     |                    |
+ T |                   |     |   Software ID       |     |                    |
+ E |                   |     |   File Type         |     |                    |
+   |                   |     | +-----------------+ |     |                    |
+ L |                   +-------> Content Base64  | |     |     SOAP Body      |
+ E |                   |     | +-----------------+ |     | +----------------+ |
+ G |                   |     |                     |     | | Request Header | |
+ A |                   |     |                     +-------> Appl. Req.     | |
+ C |                   |     |                     |     | +----------------+ |
+ Y |                   |     |                     |     |                    |
+   +-------------------+     +---------------------+     +--------------------+
+
+   1.          | 2.      | 3.                   | 4.        | 5.
+   Generate    | Import  | Builds XML structure | Transport | Creates WS Message
+   Legacy data | Payload | and signs it         | App.Req.  | and signs it
+
+```
+
 ## Getting Started
 
 ```bash
