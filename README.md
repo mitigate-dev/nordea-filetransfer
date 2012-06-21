@@ -41,9 +41,10 @@ response.application_response
 
 ## References
 
-* [Nordea: Web Services guidelines for software suppliers](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services_ohjelmistotalot.pdf)
-* [Nordea: Instructions](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Instructions/1433022.html)
-* [Nordea: Example files](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Example+files/1466002.html)
+* [Nordea: Web Services Security and Communication](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services_ohjelmistotalot.pdf)
 * [Nordea: Web Services](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services.pdf)
+* [Nordea: File Transfer Instructions](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Instructions/1433022.html)
+* [Nordea: File Transfer Example files](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Example+files/1466002.html)
+* [Nordea: File Transfer WSDL](https://filetransfer.nordea.com/services/CorporateFileService?wsdl)
 * [Nordea: ApplicationRequest.xsd](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationRequest.xsd)
 * [Nordea: ApplicationResponse.xsd](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationResponse.xsd)
