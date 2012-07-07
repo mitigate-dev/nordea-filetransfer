@@ -30,6 +30,7 @@ describe Nordea::FileTransfer::Client do
       }
     end
 
-    ap response
+    response.response_header.request_id.should == "1232"
+    response.application_response.user_file_types.size.should be > 0
   end
 end
