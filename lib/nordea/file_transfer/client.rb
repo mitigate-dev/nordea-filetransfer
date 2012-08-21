@@ -46,7 +46,7 @@ module Nordea
 
           soap.body = req.to_hash
         end
-        Response.new(response.to_hash[:get_user_infoout])
+        Response.new(response.to_hash[:"#{action}out"])
       end
     end
   end

@@ -9,7 +9,7 @@ module Nordea
       attribute :timestamp, DateTime, :required => true
       attribute :start_date, Date
       attribute :end_date, Date
-      attribute :status, String
+      attribute :status, String, :length => 1..10 # (NEW|DOWNLOADED|ALL)
       attribute :service_id, String
       attribute :environment, String, :required => true # (PRODUCTION|TEST)
       attribute :file_references, Array[String]
@@ -24,6 +24,7 @@ module Nordea
       attribute :transaction_count, Integer
       attribute :software_id, String
       attribute :customer_extension, String
+      attribute :file_type, String, :length => 1..40
       attribute :content, String # Base64
 
       def to_hash

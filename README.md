@@ -68,10 +68,13 @@ response.application_response
 
 ## References
 
-* [Nordea: Web Services Security and Communication](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services_ohjelmistotalot.pdf)
-* [Nordea: Web Services](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services.pdf)
-* [Nordea: File Transfer Instructions](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Instructions/1433022.html)
-* [Nordea: File Transfer Example files](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Example+files/1466002.html)
-* [Nordea: File Transfer WSDL](https://filetransfer.nordea.com/services/CorporateFileService?wsdl)
-* [Nordea: ApplicationRequest.xsd](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationRequest.xsd)
-* [Nordea: ApplicationResponse.xsd](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationResponse.xsd)
+* [Nordea: Web Services Security and Communication (PDF)](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services_ohjelmistotalot.pdf)
+* [Nordea: Web Services (PDF)](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/web_services.pdf)
+* [Nordea: File Transfer Service Description (PDF)](http://www.nordea.fi/sitemod/upload/Root/fi_org/liite/e/yritys/pdf/erasiir.pdf)
+* [Nordea: File Transfer Instructions (HTML)](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Instructions/1433022.html)
+* [Nordea: File Transfer Example files (HTML)](http://www.nordea.fi/Corporate+customers/Payments+and+cards/Advice+on+payments+and+cards/Example+files/1466002.html)
+* [Nordea: File Transfer WSDL (XML)](https://filetransfer.nordea.com/services/CorporateFileService?wsdl)
+* [Nordea: File Transfer WSDL: XSD1 (XML)](https://filetransfer.nordea.com/services/CorporateFileService.xsd1.xsd)
+* [Nordea: File Transfer WSDL: XSD2 (XML)](https://filetransfer.nordea.com/services/CorporateFileService.xsd2.xsd)
+* [Nordea: File Transfer WSDL: ApplicationRequest.xsd (XML)](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationRequest.xsd)
+* [Nordea: File Transfer WSDL: ApplicationResponse.xsd (XML)](http://www.nordea.fi/sitemod/upload/root/fi_org/liite/ApplicationResponse.xsd)

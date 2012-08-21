@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.version       = Nordea::FileTransfer::VERSION
 
   gem.add_development_dependency "rake", ">= 0.9.2.2"
-  gem.add_development_dependency "rspec", "~> 2.10"
+  gem.add_development_dependency "rspec", "~> 2.11"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "vcr"
   gem.add_development_dependency "fakeweb"

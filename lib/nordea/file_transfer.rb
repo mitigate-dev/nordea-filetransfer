@@ -18,5 +18,6 @@ module Nordea
     autoload :ApplicationResponse, 'nordea/file_transfer/application_response'
     autoload :FileTypeService,     'nordea/file_transfer/file_type_service'
     autoload :UserFileType,        'nordea/file_transfer/user_file_type'
+    autoload :FileDescriptor,      'nordea/file_transfer/file_descriptor'
   end
 end

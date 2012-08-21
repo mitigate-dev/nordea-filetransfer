@@ -15,7 +15,7 @@ module Nordea
       attribute :compression_method, String
       attribute :amount_total, BigDecimal
       attribute :transaction_count, Integer
-      attribute :file_descriptors, Array, :default => []
+      attribute :file_descriptors, Array[FileDescriptor], :default => []
       attribute :customer_extension, String
       attribute :file_type, String
       attribute :user_file_types, Array[UserFileType], :default => []
@@ -29,6 +29,9 @@ module Nordea
         end
         if attributes[:user_file_types]
           attributes[:user_file_types] = attributes[:user_file_types][:user_file_type]
+        end
+        if attributes[:file_descriptors]
+          attributes[:file_descriptors] = attributes[:file_descriptors][:file_descriptor]
         end
         super(attributes)
       end
