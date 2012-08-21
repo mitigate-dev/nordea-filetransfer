@@ -70,4 +70,36 @@ describe Nordea::FileTransfer::Client do
       response.application_response.file_descriptors.size.should be > 0
     end
   end
+
+  describe "DownloadFile" do
+    # http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/kurssi_aineisto.pdf
+    it "send a request and return response with exchange rates" do
+      response = VCR.use_cassette('download_file') do
+        client.request(:download_file) do |r|
+          r.request_header.attributes = {
+            :sender_id   => 11111111,
+            :request_id  => 1234,
+            :timestamp   => Time.now,
+            :language    => "EN",
+            :user_agent  => "Ruby",
+            :receiver_id => 123456789
+          }
+          r.application_request.attributes = {
+            :customer_id      => 162355330,
+            :command          => "DownloadFile",
+            :timestamp        => Time.now,
+            :environment      => "PRODUCTION",
+            :file_references  => ["1320120312210394"],
+            :target_id        => "11111111A1",
+            :execution_serial => "001",
+            :software_id      => "Ruby",
+            :file_type        => "VKEUR"
+          }
+        end
+      end
+
+      response.response_header.request_id.should == "1234"
+      response.application_response.content.should include("VK01")
+    end
+  end
 end

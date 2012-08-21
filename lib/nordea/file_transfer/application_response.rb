@@ -20,7 +20,7 @@ module Nordea
       attribute :file_type, String
       attribute :user_file_types, Array[UserFileType], :default => []
 
-      attribute :content, String # Base64
+      attribute :content, Attributes::Base64String
       attribute :signature, Hash
 
       def initialize(attributes = {})
@@ -28,10 +28,10 @@ module Nordea
           attributes = Nori.parse(Base64.decode64(attributes))[:application_response]
         end
         if attributes[:user_file_types]
-          attributes[:user_file_types] = attributes[:user_file_types][:user_file_type]
+          attributes[:user_file_types] = Array.wrap(attributes[:user_file_types][:user_file_type])
         end
         if attributes[:file_descriptors]
-          attributes[:file_descriptors] = attributes[:file_descriptors][:file_descriptor]
+          attributes[:file_descriptors] = Array.wrap(attributes[:file_descriptors][:file_descriptor])
         end
         super(attributes)
       end
