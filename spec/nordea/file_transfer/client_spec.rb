@@ -41,7 +41,7 @@ describe Nordea::FileTransfer::Client do
   end
 
   describe "DownloadFileList" do
-    it "does something" do
+    it "should send a request and return response" do
       response = VCR.use_cassette('download_file_list') do
         client.request(:download_file_list) do |r|
           r.request_header.attributes = {
