@@ -37,9 +37,7 @@ module Nordea
         attributes.each do |key, value|
           next unless value
           if value.is_a?(Array) && value.size > 0
-            hash["ApplicationRequest"][key.to_s.camelcase] = value.map do |v|
-              { "FileReference" => v }
-            end
+            hash["ApplicationRequest"][key.to_s.camelcase] = { key.to_s.camelcase[0..-2] => value }
           else
             hash["ApplicationRequest"][key.to_s.camelcase] = value
           end
