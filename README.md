@@ -42,7 +42,11 @@ client = Nordea::FileTransfer::Client.new(
   :cert_file => "path/to/cert.pem",
   :private_key_file => "path/to/key.pem"
 )
+```
 
+### Get User Info
+
+```ruby
 response = client.request(:get_user_info) do |r|
   r.request_header.attributes = {
     :sender_id   => 11111111,
@@ -61,9 +65,58 @@ response = client.request(:get_user_info) do |r|
     :software_id      => "Ruby"
   }
 end
+```
 
-response.response_header
-response.application_response
+### Download File List
+
+```ruby
+response = client.request(:download_file_list) do |r|
+  r.request_header.attributes = {
+    :sender_id   => 11111111,
+    :request_id  => 1233,
+    :timestamp   => Time.now,
+    :language    => "EN",
+    :user_agent  => "Ruby",
+    :receiver_id => 123456789
+  }
+  r.application_request.attributes = {
+    :customer_id      => 162355330,
+    :command          => "DownloadFileList",
+    :timestamp        => Time.now,
+    :status           => "ALL",
+    :environment      => "PRODUCTION",
+    :target_id        => "11111111A1",
+    :execution_serial => "001",
+    :software_id      => "Ruby",
+    :file_type        => "NDCORPAYL"
+  }
+end
+```
+
+### Download File
+
+```ruby
+response = client.request(:download_file) do |r|
+  r.request_header.attributes = {
+    :sender_id   => 11111111,
+    :request_id  => 1234,
+    :timestamp   => Time.now,
+    :language    => "EN",
+    :user_agent  => "Ruby",
+    :receiver_id => 123456789
+  }
+  r.application_request.attributes = {
+    :customer_id      => 162355330,
+    :command          => "DownloadFile",
+    :timestamp        => Time.now,
+    :environment      => "PRODUCTION",
+    :file_references  => ["1320120312210394"],
+    :target_id        => "11111111A1",
+    :execution_serial => "001",
+    :software_id      => "Ruby",
+    :file_type        => "VKEUR"
+  }
+end
 ```
 
 ## References
