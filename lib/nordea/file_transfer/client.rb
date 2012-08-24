@@ -36,11 +36,16 @@ module Nordea
           soap.namespaces["xmlns"]      = "http://model.bxd.fi"
           soap.namespaces["xmlns:xsns"] = "http://bxd.fi/CorporateFileService"
 
+          timestamp = Time.now
+
           req = Request.new
           req.cert = cert
           req.private_key = private_key
           req.request_header = RequestHeader.new
+          req.request_header.timestamp = timestamp
           req.application_request = ApplicationRequest.new
+          req.application_request.command = action.to_s.camelcase
+          req.application_request.timestamp = timestamp
 
           yield req
 
