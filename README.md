@@ -27,7 +27,7 @@
 
 ```
 
-## Getting Started
+## Installation
 
 ```bash
 $ gem install nordea-filetransfer
@@ -53,8 +53,11 @@ response = client.request :get_user_info do |header, request|
   request.customer_id = 162355330
 end
 
-response.response_header      # => Nordea::FileTransfer::ResponseHeader
-response.application_response # => Nordea::FileTransfer::ApplicationResponse
+response.response_header
+# => Nordea::FileTransfer::ResponseHeader
+
+response.application_response
+# => Nordea::FileTransfer::ApplicationResponse
 ```
 
 ### Get User Info
@@ -64,6 +67,9 @@ response = client.request :get_user_info do |header, request|
   header.receiver_id  = 123456789
   request.customer_id = 162355330,
 end
+
+response.application_response.user_file_types
+# => [Nordea::FileTransfer::UserFileType, ...]
 ```
 
 ### Download File List
@@ -76,6 +82,9 @@ response = client.request :download_file_list do |header, request|
   request.target_id   = "11111111A1"
   request.file_type   = "NDCORPAYL"
 end
+
+response.application_response.file_descriptors
+# => [Nordea::FileTransfer::FileDescriptor, ...]
 ```
 
 ### Download File
@@ -88,6 +97,13 @@ response = client.request :download_file do |header, request|
   request.target_id       = "11111111A1"
   request.file_type       = "VKEUR"
 end
+
+response.application_response.content
+# => VK0100020120821154650Listakurssit alle 40.000 eur maksuille 21.08.12 15:35
+#    VK01001199901010730000001EUREUR00000100000000000010000000000001000000000000100000000000010000000+K000000000K
+#    VK01001201208211535490001USDEUR00000124280000000012578000000001227800000000127180000000012138000+K000000000K
+#    VK01001201208211535470001JPYEUR00009881000000001008100000000096810000000010252000000000951000000+K000000000K
+#    ...
 ```
 
 ## References
