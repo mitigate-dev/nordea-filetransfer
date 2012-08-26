@@ -93,7 +93,7 @@ response.application_response.file_descriptors
 response = client.request :download_file do |header, request|
   header.receiver_id      = 123456789
   request.customer_id     = 162355330
-  request.file_references = ["1320120312210394"]
+  request.file_references = ["2012082621423418"]
   request.target_id       = "11111111A1"
   request.file_type       = "VKEUR"
 end
