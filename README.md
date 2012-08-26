@@ -39,83 +39,55 @@ $ gem install nordea-filetransfer
 require "noredea/file_transfer"
 
 client = Nordea::FileTransfer::Client.new(
-  :cert_file => "path/to/cert.pem",
-  :private_key_file => "path/to/key.pem"
+  :cert_file        => "path/to/cert.pem",
+  :private_key_file => "path/to/key.pem",
+  :sender_id        => 11111111,
+  :language         => "EN",
+  :environment      => "PRODUCTION"
+  :user_agent       => "Ruby",
+  :software_id      => "Ruby"
 )
+
+response = client.request :get_user_info do |header, request|
+  header.receiver_id  = 123456789
+  request.customer_id = 162355330
+end
+
+response.response_header      # => Nordea::FileTransfer::ResponseHeader
+response.application_response # => Nordea::FileTransfer::ApplicationResponse
 ```
 
 ### Get User Info
 
 ```ruby
-response = client.request(:get_user_info) do |r|
-  r.request_header.attributes = {
-    :sender_id   => 11111111,
-    :request_id  => 1232,
-    :timestamp   => Time.now,
-    :language    => "EN",
-    :user_agent  => "Ruby",
-    :receiver_id => 123456789
-  }
-  r.application_request.attributes = {
-    :customer_id      => 162355330,
-    :command          => "GetUserInfo",
-    :timestamp        => Time.now,
-    :environment      => "PRODUCTION",
-    :execution_serial => "001",
-    :software_id      => "Ruby"
-  }
+response = client.request :get_user_info do |header, request|
+  header.receiver_id  = 123456789
+  request.customer_id = 162355330,
+  request.command     = "GetUserInfo"
 end
 ```
 
 ### Download File List
 
 ```ruby
-response = client.request(:download_file_list) do |r|
-  r.request_header.attributes = {
-    :sender_id   => 11111111,
-    :request_id  => 1233,
-    :timestamp   => Time.now,
-    :language    => "EN",
-    :user_agent  => "Ruby",
-    :receiver_id => 123456789
-  }
-  r.application_request.attributes = {
-    :customer_id      => 162355330,
-    :command          => "DownloadFileList",
-    :timestamp        => Time.now,
-    :status           => "ALL",
-    :environment      => "PRODUCTION",
-    :target_id        => "11111111A1",
-    :execution_serial => "001",
-    :software_id      => "Ruby",
-    :file_type        => "NDCORPAYL"
-  }
+response = client.request :download_file_list do |header, request|
+  header.receiver_id  = 123456789
+  request.customer_id = 162355330
+  request.status      = "ALL"
+  request.target_id   = "11111111A1"
+  request.file_type   = "NDCORPAYL"
 end
 ```
 
 ### Download File
 
 ```ruby
-response = client.request(:download_file) do |r|
-  r.request_header.attributes = {
-    :sender_id   => 11111111,
-    :request_id  => 1234,
-    :timestamp   => Time.now,
-    :language    => "EN",
-    :user_agent  => "Ruby",
-    :receiver_id => 123456789
-  }
-  r.application_request.attributes = {
-    :customer_id      => 162355330,
-    :command          => "DownloadFile",
-    :timestamp        => Time.now,
-    :environment      => "PRODUCTION",
-    :file_references  => ["1320120312210394"],
-    :target_id        => "11111111A1",
-    :execution_serial => "001",
-    :software_id      => "Ruby",
-    :file_type        => "VKEUR"
-  }
+response = client.request :download_file do |header, request|
+  header.receiver_id      = 123456789
+  request.customer_id     = 162355330
+  request.file_references = ["1320120312210394"]
+  request.target_id       = "11111111A1"
+  request.file_type       = "VKEUR"
 end
 ```
 

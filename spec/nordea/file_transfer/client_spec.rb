@@ -3,8 +3,13 @@ require "spec_helper"
 describe Nordea::FileTransfer::Client do
   subject :client do
     Nordea::FileTransfer::Client.new(
-      :cert_file => cert_file,
-      :private_key_file => cert_file
+      :cert_file        => cert_file,
+      :private_key_file => cert_file,
+      :sender_id        => 11111111,
+      :language         => "EN",
+      :environment      => "PRODUCTION",
+      :user_agent       => "Ruby",
+      :software_id      => "Ruby"
     )
   end
 
@@ -15,27 +20,11 @@ describe Nordea::FileTransfer::Client do
   describe "GetUserInfo" do
     it "should send a request and return response" do
       response = VCR.use_cassette('get_user_info') do
-        client.request(:get_user_info) do |r|
-          r.request_header.attributes = {
-            :sender_id   => 11111111,
-            :request_id  => 1232,
-            :timestamp   => Time.now,
-            :language    => "EN",
-            :user_agent  => "Ruby",
-            :receiver_id => 123456789
-          }
-          r.application_request.attributes = {
-            :customer_id      => 162355330,
-            :command          => "GetUserInfo",
-            :timestamp        => Time.now,
-            :environment      => "PRODUCTION",
-            :execution_serial => "001",
-            :software_id      => "Ruby"
-          }
+        client.request :get_user_info do |header, request|
+          header.receiver_id  = 123456789
+          request.customer_id = 162355330
         end
       end
-
-      response.response_header.request_id.should == "1232"
       response.application_response.user_file_types.size.should be > 0
     end
   end
@@ -43,30 +32,14 @@ describe Nordea::FileTransfer::Client do
   describe "DownloadFileList" do
     it "should send a request and return response" do
       response = VCR.use_cassette('download_file_list') do
-        client.request(:download_file_list) do |r|
-          r.request_header.attributes = {
-            :sender_id   => 11111111,
-            :request_id  => 1233,
-            :timestamp   => Time.now,
-            :language    => "EN",
-            :user_agent  => "Ruby",
-            :receiver_id => 123456789
-          }
-          r.application_request.attributes = {
-            :customer_id      => 162355330,
-            :command          => "DownloadFileList",
-            :timestamp        => Time.now,
-            :status           => "ALL",
-            :environment      => "PRODUCTION",
-            :target_id        => "11111111A1",
-            :execution_serial => "001",
-            :software_id      => "Ruby",
-            :file_type        => "NDCORPAYL"
-          }
+        client.request :download_file_list do |header, request|
+          header.receiver_id  = 123456789
+          request.customer_id = 162355330
+          request.status      = "ALL"
+          request.target_id   = "11111111A1"
+          request.file_type   = "NDCORPAYL"
         end
       end
-
-      response.response_header.request_id.should == "1233"
       response.application_response.file_descriptors.size.should be > 0
     end
   end
@@ -75,30 +48,15 @@ describe Nordea::FileTransfer::Client do
     # http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/kurssi_aineisto.pdf
     it "send a request and return response with exchange rates" do
       response = VCR.use_cassette('download_file') do
-        client.request(:download_file) do |r|
-          r.request_header.attributes = {
-            :sender_id   => 11111111,
-            :request_id  => 1234,
-            :timestamp   => Time.now,
-            :language    => "EN",
-            :user_agent  => "Ruby",
-            :receiver_id => 123456789
-          }
-          r.application_request.attributes = {
-            :customer_id      => 162355330,
-            :command          => "DownloadFile",
-            :timestamp        => Time.now,
-            :environment      => "PRODUCTION",
-            :file_references  => ["1320120312210394"],
-            :target_id        => "11111111A1",
-            :execution_serial => "001",
-            :software_id      => "Ruby",
-            :file_type        => "VKEUR"
-          }
+        client.request :download_file do |header, request|
+          header.receiver_id      = 123456789
+          request.customer_id     = 162355330
+          request.file_references = ["1320120312210394"]
+          request.target_id       = "11111111A1"
+          request.software_id     = "Ruby"
+          request.file_type       = "VKEUR"
         end
       end
-
-      response.response_header.request_id.should == "1234"
       response.application_response.content.should include("VK01")
     end
   end
