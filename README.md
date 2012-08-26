@@ -62,6 +62,9 @@ response.application_response
 
 ### Get User Info
 
+> The service will provide the client with information of
+> authorized user file types and service ID’s.
+
 ```ruby
 response = client.request :get_user_info do |header, request|
   header.receiver_id  = 123456789
@@ -73,6 +76,9 @@ response.application_response.user_file_types
 ```
 
 ### Download File List
+
+> The service will provide the client with a list of
+> files that are available for download from Nordea.
 
 ```ruby
 response = client.request :download_file_list do |header, request|
@@ -89,6 +95,14 @@ response.application_response.file_descriptors
 
 ### Download File
 
+> The service will provide the client with requested files.
+> Downloadable files can be checked by DownloadFileList –service. The query may be:
+> 
+> - download single file
+> - download multiple files
+> - download all files of type
+> - download all files
+
 ```ruby
 response = client.request :download_file do |header, request|
   header.receiver_id      = 123456789
@@ -104,6 +118,27 @@ response.application_response.content
 #    VK01001201208211535490001USDEUR00000124280000000012578000000001227800000000127180000000012138000+K000000000K
 #    VK01001201208211535470001JPYEUR00009881000000001008100000000096810000000010252000000000951000000+K000000000K
 #    ...
+```
+
+### Upload File (TODO)
+
+> The Service will provide the transport of the customers file to Nordea.
+> The response from Nordea will  be a transport acknowledgement with details
+> regarding the status of the transport.
+> 
+> Backend system will process the files in batch mode. This means that the only
+> verification of a file transfer, successful or not, will be a transfer
+> acknowledgement. The client will not usually receive any other notification and
+> the result must be retrieved with a new call later.
+
+```ruby
+response = client.request :upload_file do |header, request|
+  header.receiver_id      = 123456789
+  request.customer_id     = 162355330
+  request.target_id       = "11111111A1"
+  request.file_type       = "..."
+  request.content         = "..."
+end
 ```
 
 ## References
