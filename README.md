@@ -63,7 +63,6 @@ response.application_response # => Nordea::FileTransfer::ApplicationResponse
 response = client.request :get_user_info do |header, request|
   header.receiver_id  = 123456789
   request.customer_id = 162355330,
-  request.command     = "GetUserInfo"
 end
 ```
 
