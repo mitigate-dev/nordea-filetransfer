@@ -25,7 +25,7 @@ module Nordea
       attribute :software_id, String
       attribute :customer_extension, String
       attribute :file_type, String, :length => 1..40
-      attribute :content, String # Base64
+      attribute :content, Attributes::EncodedBase64String
 
       def to_hash
         hash = {

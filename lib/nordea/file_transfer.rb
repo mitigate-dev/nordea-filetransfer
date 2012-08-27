@@ -8,6 +8,7 @@ require 'nordea/file_transfer/version'
 module Nordea
   module FileTransfer
     autoload :Client,              'nordea/file_transfer/client'
+    autoload :Error,               'nordea/file_transfer/error'
     autoload :Attributes,          'nordea/file_transfer/attributes'
 
     autoload :Request,             'nordea/file_transfer/request'

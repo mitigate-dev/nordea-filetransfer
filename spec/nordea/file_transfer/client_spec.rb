@@ -2,6 +2,9 @@ require "spec_helper"
 
 describe Nordea::FileTransfer::Client do
   subject :client do
+    Savon.configure do |config|
+      config.log = false
+    end
     Nordea::FileTransfer::Client.new(
       :cert_file        => cert_file,
       :private_key_file => cert_file,
@@ -58,6 +61,42 @@ describe Nordea::FileTransfer::Client do
         end
       end
       response.application_response.content.should include("VK01")
+    end
+
+    it "should raise error #29 when file references are not present" do
+      lambda {
+        response = VCR.use_cassette('download_file_error') do
+          client.request :download_file do |header, request|
+            header.receiver_id      = 123456789
+            request.customer_id     = 162355330
+            request.target_id       = "11111111A1"
+            request.software_id     = "Ruby"
+            request.file_type       = "VKEUR"
+          end
+        end
+      }.should raise_error(
+        Nordea::FileTransfer::Error,
+        "Invalid parameters: At least one FileReference required for downloading (#29)"
+      )
+    end
+  end
+
+  describe "UploadFile" do
+    it "should raise error #23 on content processing error" do
+      lambda {
+        response = VCR.use_cassette('upload_file') do
+          client.request :upload_file do |header, request|
+            header.receiver_id  = 123456789
+            request.customer_id = 162355330
+            request.target_id   = "11111111A1"
+            request.file_type   = "VKEUR"
+            request.content     = "TEST"
+          end
+        end
+      }.should raise_error(
+        Nordea::FileTransfer::Error,
+        "Content processing error. Download feedback. (#23)"
+      )
     end
   end
 end

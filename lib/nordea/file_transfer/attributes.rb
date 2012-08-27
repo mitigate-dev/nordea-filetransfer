@@ -3,7 +3,15 @@ require "base64"
 module Nordea
   module FileTransfer
     module Attributes
-      class Base64String < Virtus::Attribute::Object
+      class EncodedBase64String < Virtus::Attribute::Object
+        primitive String
+
+        def coerce(value)
+          value && Base64.encode64(value)
+        end
+      end
+
+      class DecodedBase64String < Virtus::Attribute::Object
         primitive String
 
         def coerce(value)

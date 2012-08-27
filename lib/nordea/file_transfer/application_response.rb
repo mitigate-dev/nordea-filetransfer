@@ -20,7 +20,7 @@ module Nordea
       attribute :file_type, String
       attribute :user_file_types, Array[UserFileType], :default => []
 
-      attribute :content, Attributes::Base64String
+      attribute :content, Attributes::DecodedBase64String
       attribute :signature, Hash
 
       def initialize(attributes = {})
