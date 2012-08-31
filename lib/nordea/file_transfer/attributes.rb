@@ -7,7 +7,7 @@ module Nordea
         primitive String
 
         def coerce(value)
-          value && Base64.encode64(value)
+          value && Base64.encode64(value).chomp
         end
       end
 
