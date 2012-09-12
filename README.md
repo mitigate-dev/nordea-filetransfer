@@ -136,7 +136,9 @@ response = client.request :upload_file do |header, request|
   header.receiver_id      = 123456789
   request.customer_id     = 162355330
   request.target_id       = "11111111A1"
-  request.file_type       = "..."
+  request.service_id      = "0012345678"
+  request.file_type       = "CNFTC000S"
+  request.user_filename   = "TEST.TXT"
   request.content         = "..."
 end
 ```

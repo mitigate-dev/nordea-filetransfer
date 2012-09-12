@@ -1,8 +1,8 @@
 module Nordea
   module FileTransfer
     class Client < Savon::Client
-      attr_reader :cert_file, :private_key_file
-      attr_reader :sender_id, :language, :user_agent, :environment, :software_id
+      attr_reader :cert_file, :private_key_file, :private_key_password
+      attr_reader :sender_id, :receiver_id, :customer_id, :language, :user_agent, :environment, :software_id
 
       def initialize(options = {})
         options.each do |key, value|
@@ -24,7 +24,7 @@ module Nordea
       end
 
       def private_key
-        OpenSSL::PKey::RSA.new(File.read(private_key_file))
+        OpenSSL::PKey::RSA.new(File.read(private_key_file), private_key_password)
       end
 
       # Actions:
@@ -45,19 +45,23 @@ module Nordea
           req.private_key = private_key
 
           req.request_header = RequestHeader.new
-          req.request_header.sender_id  = sender_id
-          req.request_header.request_id = timestamp.to_i
-          req.request_header.timestamp  = timestamp
-          req.request_header.language   = language
-          req.request_header.user_agent = user_agent
+          req.request_header.sender_id   = sender_id
+          req.request_header.request_id  = timestamp.to_i
+          req.request_header.timestamp   = timestamp
+          req.request_header.language    = language
+          req.request_header.user_agent  = user_agent
+          req.request_header.receiver_id = receiver_id
 
           req.application_request = ApplicationRequest.new
+          req.application_request.customer_id = customer_id
           req.application_request.command     = action.to_s.camelcase
           req.application_request.timestamp   = timestamp
           req.application_request.environment = environment
           req.application_request.software_id = software_id
 
-          yield req.request_header, req.application_request
+          if block_given?
+            yield req.request_header, req.application_request
+          end
 
           soap.body = req.to_hash
         end
