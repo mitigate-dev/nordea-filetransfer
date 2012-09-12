@@ -120,7 +120,7 @@ response.application_response.content
 #    ...
 ```
 
-### Upload File (TODO)
+### Upload File
 
 > The Service will provide the transport of the customers file to Nordea.
 > The response from Nordea will  be a transport acknowledgement with details
