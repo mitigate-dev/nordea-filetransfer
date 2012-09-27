@@ -4,8 +4,8 @@ module Nordea
       include Config
 
       def initialize(options = {})
-        options.each do |key, value|
-          send("#{key}=", value || Nordea::FileTransfer.config.send(key))
+        Nordea::FileTransfer.config.keys.each do |key|
+          send("#{key}=", options[key] || Nordea::FileTransfer.config.send(key))
         end
 
         @savon_client = Savon::Client.new do |wsdl, http, wsse|
