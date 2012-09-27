@@ -26,3 +26,10 @@ end
 Savon.configure do |config|
   config.pretty_print_xml = true
 end
+
+Nordea::FileTransfer.configure do |config|
+  config.language = "EN"
+  config.environment = "PRODUCTION"
+  config.user_agent = "Ruby"
+  config.software_id = "Ruby"
+end

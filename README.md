@@ -38,15 +38,17 @@ $ gem install nordea-filetransfer
 ```ruby
 require "noredea/file_transfer"
 
-client = Nordea::FileTransfer::Client.new(
-  :cert_file        => "path/to/cert.pem",
-  :private_key_file => "path/to/key.pem",
-  :sender_id        => 11111111,
-  :language         => "EN",
-  :environment      => "PRODUCTION"
-  :user_agent       => "Ruby",
-  :software_id      => "Ruby"
-)
+Nordea::FileTransfer.configure do |config|
+  config.language = "EN"
+  config.environment = "PRODUCTION"
+  config.user_agent = "Ruby"
+  config.software_id = "Ruby"
+  config.cert_file = "path/to/cert.pem"
+  config.private_key_file = "path/to/key.pem"
+  config.sender_id = 11111111
+end
+
+client = Nordea::FileTransfer::Client.new
 
 response = client.request :get_user_info do |header, request|
   header.receiver_id  = 123456789

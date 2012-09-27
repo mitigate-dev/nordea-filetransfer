@@ -1,0 +1,314 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://filetransfer.nordea.com/services/CorporateFileService?wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      set-cookie:
+      - LBSESSIONID=r474460430; path=/
+      x-backside-transport:
+      - OK OK
+      connection:
+      - Keep-Alive
+      transfer-encoding:
+      - chunked
+      user-agent:
+      - Ruby
+      host:
+      - 127.0.0.1:63505
+      via:
+      - 1.1 system-wsgw-management-loopback
+      x-client-ip:
+      - 127.0.0.1,10.28.16.15
+      cache-control:
+      - no-transform
+      x-archived-client-ip:
+      - 10.28.16.15,127.0.0.1
+      content-type:
+      - text/xml
+      date:
+      - Thu, 27 Sep 2012 15:38:13 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="UTF-8"?>
+
+
+        <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+        xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy"
+        xmlns:ns0="http://bxd.fi/CorporateFileService" targetNamespace="http://bxd.fi/CorporateFileService">
+
+        <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+        <xsd:schema>
+
+        <xsd:import schemaLocation="CorporateFileService.xsd2.xsd" namespace="http://bxd.fi/CorporateFileService"/></xsd:schema></wsdl:types>
+
+        <wsdl:message name="deleteFileRequest">
+
+        <wsdl:part name="deleteFilein" element="xsns:deleteFilein" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="deleteFileResponse">
+
+        <wsdl:part name="deleteFileout" element="xsns:deleteFileout" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="downloadFileListRequest">
+
+        <wsdl:part name="downloadFileListin" element="xsns:downloadFileListin" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="downloadFileListResponse">
+
+        <wsdl:part name="downloadFileListout" element="xsns:downloadFileListout" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="downloadFileRequest">
+
+        <wsdl:part name="downloadFilein" element="xsns:downloadFilein" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="downloadFileResponse">
+
+        <wsdl:part name="downloadFileout" element="xsns:downloadFileout" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="FileServiceFault">
+
+        <wsdl:part name="FileServiceFault" element="xsns:FileServiceFaultElement"
+        xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="getUserInfoRequest">
+
+        <wsdl:part name="getUserInfoin" element="xsns:getUserInfoin" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="getUserInfoResponse">
+
+        <wsdl:part name="getUserInfoout" element="xsns:getUserInfoout" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="uploadFileRequest">
+
+        <wsdl:part name="uploadFilein" element="xsns:uploadFilein" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:message name="uploadFileResponse">
+
+        <wsdl:part name="uploadFileout" element="xsns:uploadFileout" xmlns:xsns="http://bxd.fi/CorporateFileService"/></wsdl:message>
+
+        <wsdl:portType name="CorporateFileServicePortType">
+
+        <wsdl:operation name="deleteFile">
+
+        <wsdl:input name="deleteFileRequest" message="ns0:deleteFileRequest"/>
+
+        <wsdl:output name="deleteFileResponse" message="ns0:deleteFileResponse"/>
+
+        <wsdl:fault name="FileServiceFault" message="ns0:FileServiceFault"/></wsdl:operation>
+
+        <wsdl:operation name="downloadFile">
+
+        <wsdl:input name="downloadFileRequest" message="ns0:downloadFileRequest"/>
+
+        <wsdl:output name="downloadFileResponse" message="ns0:downloadFileResponse"/>
+
+        <wsdl:fault name="FileServiceFault" message="ns0:FileServiceFault"/></wsdl:operation>
+
+        <wsdl:operation name="downloadFileList">
+
+        <wsdl:input name="downloadFileListRequest" message="ns0:downloadFileListRequest"/>
+
+        <wsdl:output name="downloadFileListResponse" message="ns0:downloadFileListResponse"/>
+
+        <wsdl:fault name="FileServiceFault" message="ns0:FileServiceFault"/></wsdl:operation>
+
+        <wsdl:operation name="getUserInfo">
+
+        <wsdl:input name="getUserInfoRequest" message="ns0:getUserInfoRequest"/>
+
+        <wsdl:output name="getUserInfoResponse" message="ns0:getUserInfoResponse"/>
+
+        <wsdl:fault name="FileServiceFault" message="ns0:FileServiceFault"/></wsdl:operation>
+
+        <wsdl:operation name="uploadFile">
+
+        <wsdl:input name="uploadFileRequest" message="ns0:uploadFileRequest"/>
+
+        <wsdl:output name="uploadFileResponse" message="ns0:uploadFileResponse"/>
+
+        <wsdl:fault name="FileServiceFault" message="ns0:FileServiceFault"/></wsdl:operation></wsdl:portType>
+
+        <wsdl:binding name="CorporateFileServiceHttpBinding" type="ns0:CorporateFileServicePortType">
+
+        <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+
+        <wsdl:operation name="deleteFile">
+
+        <soap11:operation soapAction="" style="document"/>
+
+        <wsdl:input name="deleteFileRequest">
+
+        <soap11:body use="literal"/></wsdl:input>
+
+        <wsdl:output name="deleteFileResponse">
+
+        <soap11:body use="literal"/></wsdl:output>
+
+        <wsdl:fault name="FileServiceFault">
+
+        <soap11:fault name="FileServiceFault" use="literal"/></wsdl:fault></wsdl:operation>
+
+        <wsdl:operation name="downloadFile">
+
+        <soap11:operation soapAction="" style="document"/>
+
+        <wsdl:input name="downloadFileRequest">
+
+        <soap11:body use="literal"/></wsdl:input>
+
+        <wsdl:output name="downloadFileResponse">
+
+        <soap11:body use="literal"/></wsdl:output>
+
+        <wsdl:fault name="FileServiceFault">
+
+        <soap11:fault name="FileServiceFault" use="literal"/></wsdl:fault></wsdl:operation>
+
+        <wsdl:operation name="downloadFileList">
+
+        <soap11:operation soapAction="" style="document"/>
+
+        <wsdl:input name="downloadFileListRequest">
+
+        <soap11:body use="literal"/></wsdl:input>
+
+        <wsdl:output name="downloadFileListResponse">
+
+        <soap11:body use="literal"/></wsdl:output>
+
+        <wsdl:fault name="FileServiceFault">
+
+        <soap11:fault name="FileServiceFault" use="literal"/></wsdl:fault></wsdl:operation>
+
+        <wsdl:operation name="getUserInfo">
+
+        <soap11:operation soapAction="" style="document"/>
+
+        <wsdl:input name="getUserInfoRequest">
+
+        <soap11:body use="literal"/></wsdl:input>
+
+        <wsdl:output name="getUserInfoResponse">
+
+        <soap11:body use="literal"/></wsdl:output>
+
+        <wsdl:fault name="FileServiceFault">
+
+        <soap11:fault name="FileServiceFault" use="literal"/></wsdl:fault></wsdl:operation>
+
+        <wsdl:operation name="uploadFile">
+
+        <soap11:operation soapAction="" style="document"/>
+
+        <wsdl:input name="uploadFileRequest">
+
+        <soap11:body use="literal"/></wsdl:input>
+
+        <wsdl:output name="uploadFileResponse">
+
+        <soap11:body use="literal"/></wsdl:output>
+
+        <wsdl:fault name="FileServiceFault">
+
+        <soap11:fault name="FileServiceFault" use="literal"/></wsdl:fault></wsdl:operation></wsdl:binding>
+
+        <wsdl:service name="CorporateFileService">
+
+        <wsdl:port name="CorporateFileServiceHttpPort" binding="ns0:CorporateFileServiceHttpBinding">
+
+        <soap11:address location="http://10.28.38.149:80/services/CorporateFileService"/></wsdl:port></wsdl:service></wsdl:definitions>'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Sep 2012 15:38:13 GMT
+- request:
+    method: post
+    uri: https://filetransfer.nordea.com/services/CorporateFileService
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns="http://model.bxd.fi" xmlns:xsns="http://bxd.fi/CorporateFileService"><env:Header><wsse:Security
+        xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsse:BinarySecurityToken
+        wsu:Id="SecurityToken-597f677bcdb9e388cc56040d95e0c2e96f45844b" EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary"
+        ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+        xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">MIID+jCCAuKgAwIBAgIEASJt3DANBgkqhkiG9w0BAQUFADBsMQswCQYDVQQGEwJTRTEeMBwGA1UEChMVTm9yZGVhIEJhbmsgQUIgKHB1YmwpMScwJQYDVQQDEx5Ob3JkZWEgcm9sZS1jZXJ0aWZpY2F0ZXMgQ0EgMDExFDASBgNVBAUTCzUxNjQwNi0wMTIwMB4XDTExMDUxNzEyMzQzNVoXDTEzMDUxNzEyMzQzNVowcjELMAkGA1UEBhMCU0UxIDAeBgNVBAMMF05vcmRlYSBEZW1vIENlcnRpZmljYXRlMRQwEgYDVQQEDAtDZXJ0aWZpY2F0ZTEUMBIGA1UEKgwLTm9yZGVhIERlbW8xFTATBgNVBAUTDDAwOTU1NzI0Mzc3MjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAkR32vnJetMM5pG7VL1lOhREmPr6QIVNTkmTe0gQWiL923Jjti2wY/QCbssAKJUQK0apgbHWpTI3ZBjuuVvcT4tZaiYtP6sRy8TZqBv2OxDkDf08eErW9nkevOMvvgI0NNSO5qwif2C4+G+n8+AY34QNpbuA9hWD65wImutrkepsCAwEAAaOCASAwggEcMAkGA1UdEwQCMAAwEQYDVR0OBAoECEHToLxoFFavMBMGA1UdIAQMMAowCAYGKoVwRwEDMBMGA1UdIwQMMAqACEIFjfLBeTpRMDcGCCsGAQUFBwEBBCswKTAnBggrBgEFBQcwAYYbaHR0cDovL29jc3Aubm9yZGVhLnNlL1JDQTAxMA4GA1UdDwEB/wQEAwIFoDCBiAYDVR0fBIGAMH4wfKB6oHiGdmxkYXA6Ly9sZGFwLm5iLnNlL2NuPU5vcmRlYSUyMHJvbGUtY2VydGlmaWNhdGVzJTIwQ0ElMjAwMSxvPU5vcmRlYSUyMEJhbmslMjBBQiUyMChwdWJsKSxjPVNFP2NlcnRpZmljYXRlcmV2b2NhdGlvbmxpc3QwDQYJKoZIhvcNAQEFBQADggEBAAAp0wveJnANl6aA/fOKFGwDXkkLYlnX+dlP69YAIWVbpl2zkSbc/KJD8qDzpNX1mT0r0ECpyc+9Tn2bzvcZnw8Gj5jav/ePQhZPBavaELEBI7HTIDtFI6yDQSAjsHkgsvo27cFnAJMIXlbODeWQlUL2rR8A5AcMBEww0a/NbL7g4wU/ysfSeTWUyPpVqngVDCSdFrVpNJijVOF+WdDNfOLl8o8JuoJ1tU0NrdoeIpWtzj1WcEOcbFE87pe2iBdnWeITNjufVlr78x7lheXr1zOOCPn4K+mXhm1/PkyMBc+7E0e2upolksK3q6CCW3VbK68pLNnwuUPhdDiQO98rdW8=</wsse:BinarySecurityToken><Signature
+        xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod
+        Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference
+        URI="#Body-237276aba9b34ddb4f16300944cc8fbd2843aa9a"><Transforms><Transform
+        Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod
+        Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>fOnrRSWM2SUpwWI3cEyfeb4vfR4=</DigestValue></Reference></SignedInfo><SignatureValue>cYMIMCJAuxrOxpM3BzhvoexLsPFL3K0vHEWAjdR1F6n7K9k9r9ZGq1uCGq+MbhBCrc83MaV3iJmAEjMndDChg42kK5D1/rVrByeP+FGpBBRHwo39+d8n4BDvmvRB8TCPl4rWW1eWTYENXnZR4J0RRx1/oye8x2axj6ZbnXn9EeQ=</SignatureValue><KeyInfo><wsse:SecurityTokenReference
+        xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:Reference
+        ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+        URI="#SecurityToken-597f677bcdb9e388cc56040d95e0c2e96f45844b"/></wsse:SecurityTokenReference></KeyInfo></Signature></wsse:Security></env:Header><env:Body
+        xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+        wsu:Id="Body-237276aba9b34ddb4f16300944cc8fbd2843aa9a"><xsns:downloadFilein><RequestHeader><SenderId>11111111</SenderId><RequestId>1348760293</RequestId><Timestamp>2012-09-27T18:38:13+03:00</Timestamp><Language>EN</Language><UserAgent>Ruby</UserAgent><ReceiverId>123456789</ReceiverId></RequestHeader><ApplicationRequest>PEFwcGxpY2F0aW9uUmVxdWVzdCB4bWxucz0iaHR0cDovL2J4ZC5maS94bWxkYXRhLyI+PEN1c3RvbWVySWQ+MTYyMzU1MzMwPC9DdXN0b21lcklkPjxDb21tYW5kPkRvd25sb2FkRmlsZTwvQ29tbWFuZD48VGltZXN0YW1wPjIwMTItMDktMjdUMTg6Mzg6MTMrMDM6MDA8L1RpbWVzdGFtcD48RW52aXJvbm1lbnQ+UFJPRFVDVElPTjwvRW52aXJvbm1lbnQ+PFRhcmdldElkPjExMTExMTExQTE8L1RhcmdldElkPjxTb2Z0d2FyZUlkPlJ1Ynk8L1NvZnR3YXJlSWQ+PEZpbGVUeXBlPlZLRVVSPC9GaWxlVHlwZT48U2lnbmF0dXJlIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjIj48U2lnbmVkSW5mbz48Q2Fub25pY2FsaXphdGlvbk1ldGhvZCBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyI+PC9DYW5vbmljYWxpemF0aW9uTWV0aG9kPjxTaWduYXR1cmVNZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjcnNhLXNoYTEiPjwvU2lnbmF0dXJlTWV0aG9kPjxSZWZlcmVuY2UgVVJJPSIiPjxUcmFuc2Zvcm1zPjxUcmFuc2Zvcm0gQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzEwL3htbC1leGMtYzE0biMiPjwvVHJhbnNmb3JtPjwvVHJhbnNmb3Jtcz48RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI3NoYTEiPjwvRGlnZXN0TWV0aG9kPjxEaWdlc3RWYWx1ZT5CMzY3NVk3SUdENVlUUFViSitiL3dWZ2hpUzA9PC9EaWdlc3RWYWx1ZT48L1JlZmVyZW5jZT48L1NpZ25lZEluZm8+PFNpZ25hdHVyZVZhbHVlPk1Na2Z2Qzh3NDcwTUlzSVZWcWVyNUpwY09uWjd5NU15bHZwRm9QSXd0TTFJUmtXTXN2MnYwdWFxQUcvbUorYldrQmxVQXZQZmZ1RnMvMUJyYnM1Z3VMUElYUFRIbURMSTlEWHVRdG16cHk0NE91N3dIa1pTdWpMaENzbDNIeDM5R2pobjJtWXExUHBtM0trOWFHY25xeERzU3crS0toN1NPWVlyOXZKNkw3UT08L1NpZ25hdHVyZVZhbHVlPjxLZXlJbmZvPjxYNTA5RGF0YT48WDUwOUlzc3VlclNlcmlhbD48WDUwOUlzc3Vlck5hbWU+U3lzdGVtLlNlY3VyaXR5LkNyeXB0b2dyYXBoeS5YNTA5Q2VydGlmaWNhdGVzLlg1MDBEaXN0aW5ndWlzaGVkTmFtZTwvWDUwOUlzc3Vlck5hbWU+PFg1MDlTZXJpYWxOdW1iZXI+MTkwMzM1NjQ8L1g1MDlTZXJpYWxOdW1iZXI+PC9YNTA5SXNzdWVyU2VyaWFsPjxYNTA5Q2VydGlmaWNhdGU+TUlJRCtqQ0NBdUtnQXdJQkFnSUVBU0p0M0RBTkJna3Foa2lHOXcwQkFRVUZBREJzTVFzd0NRWURWUVFHRXdKVFJURWVNQndHQTFVRUNoTVZUbTl5WkdWaElFSmhibXNnUVVJZ0tIQjFZbXdwTVNjd0pRWURWUVFERXg1T2IzSmtaV0VnY205c1pTMWpaWEowYVdacFkyRjBaWE1nUTBFZ01ERXhGREFTQmdOVkJBVVRDelV4TmpRd05pMHdNVEl3TUI0WERURXhNRFV4TnpFeU16UXpOVm9YRFRFek1EVXhOekV5TXpRek5Wb3djakVMTUFrR0ExVUVCaE1DVTBVeElEQWVCZ05WQkFNTUYwNXZjbVJsWVNCRVpXMXZJRU5sY25ScFptbGpZWFJsTVJRd0VnWURWUVFFREF0RFpYSjBhV1pwWTJGMFpURVVNQklHQTFVRUtnd0xUbTl5WkdWaElFUmxiVzh4RlRBVEJnTlZCQVVURERBd09UVTFOekkwTXpjM01qQ0JuekFOQmdrcWhraUc5dzBCQVFFRkFBT0JqUUF3Z1lrQ2dZRUFrUjMydm5KZXRNTTVwRzdWTDFsT2hSRW1QcjZRSVZOVGttVGUwZ1FXaUw5MjNKanRpMndZL1FDYnNzQUtKVVFLMGFwZ2JIV3BUSTNaQmp1dVZ2Y1Q0dFphaVl0UDZzUnk4VFpxQnYyT3hEa0RmMDhlRXJXOW5rZXZPTXZ2Z0kwTk5TTzVxd2lmMkM0K0crbjgrQVkzNFFOcGJ1QTloV0Q2NXdJbXV0cmtlcHNDQXdFQUFhT0NBU0F3Z2dFY01Ba0dBMVVkRXdRQ01BQXdFUVlEVlIwT0JBb0VDRUhUb0x4b0ZGYXZNQk1HQTFVZElBUU1NQW93Q0FZR0tvVndSd0VETUJNR0ExVWRJd1FNTUFxQUNFSUZqZkxCZVRwUk1EY0dDQ3NHQVFVRkJ3RUJCQ3N3S1RBbkJnZ3JCZ0VGQlFjd0FZWWJhSFIwY0RvdkwyOWpjM0F1Ym05eVpHVmhMbk5sTDFKRFFUQXhNQTRHQTFVZER3RUIvd1FFQXdJRm9EQ0JpQVlEVlIwZkJJR0FNSDR3ZktCNm9IaUdkbXhrWVhBNkx5OXNaR0Z3TG01aUxuTmxMMk51UFU1dmNtUmxZU1V5TUhKdmJHVXRZMlZ5ZEdsbWFXTmhkR1Z6SlRJd1EwRWxNakF3TVN4dlBVNXZjbVJsWVNVeU1FSmhibXNsTWpCQlFpVXlNQ2h3ZFdKc0tTeGpQVk5GUDJObGNuUnBabWxqWVhSbGNtVjJiMk5oZEdsdmJteHBjM1F3RFFZSktvWklodmNOQVFFRkJRQURnZ0VCQUFBcDB3dmVKbkFObDZhQS9mT0tGR3dEWGtrTFlsblgrZGxQNjlZQUlXVmJwbDJ6a1NiYy9LSkQ4cUR6cE5YMW1UMHIwRUNweWMrOVRuMmJ6dmNabnc4R2o1amF2L2VQUWhaUEJhdmFFTEVCSTdIVElEdEZJNnlEUVNBanNIa2dzdm8yN2NGbkFKTUlYbGJPRGVXUWxVTDJyUjhBNUFjTUJFd3cwYS9OYkw3ZzR3VS95c2ZTZVRXVXlQcFZxbmdWRENTZEZyVnBOSmlqVk9GK1dkRE5mT0xsOG84SnVvSjF0VTBOcmRvZUlwV3R6ajFXY0VPY2JGRTg3cGUyaUJkbldlSVROanVmVmxyNzh4N2xoZVhyMXpPT0NQbjRLK21YaG0xL1BreU1CYys3RTBlMnVwb2xrc0szcTZDQ1czVmJLNjhwTE5ud3VVUGhkRGlRTzk4cmRXOD08L1g1MDlDZXJ0aWZpY2F0ZT48L1g1MDlEYXRhPjwvS2V5SW5mbz48L1NpZ25hdHVyZT48L0FwcGxpY2F0aW9uUmVxdWVzdD4=</ApplicationRequest></xsns:downloadFilein></env:Body></env:Envelope>
+    headers:
+      soapaction:
+      - ! '"downloadFile"'
+      content-type:
+      - text/xml;charset=UTF-8
+      content-length:
+      - '7369'
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      set-cookie:
+      - LBSESSIONID=r1765928399; path=/
+      x-backside-transport:
+      - FAIL FAIL,FAIL FAIL
+      connection:
+      - Keep-Alive
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/xml
+      date:
+      - Thu, 27 Sep 2012 15:38:14 GMT
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:mod=\"http://model.bxd.fi\"
+        xmlns:cor=\"http://bxd.fi/CorporateFileService\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"><soapenv:Header><wsse:Security
+        soapenv:mustUnderstand=\"1\" xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"><wsu:Timestamp
+        wsu:Id=\"Timestamp-fb5edeff-1bef-4269-bd08-2bc930fc75e5\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"><wsu:Created>2012-09-27T15:38:14Z</wsu:Created><wsu:Expires>2012-09-27T15:43:14Z</wsu:Expires></wsu:Timestamp><wsse:BinarySecurityToken
+        wsu:Id=\"SecurityToken-89cc9d30-1aff-4fcf-ac11-f6bc95b6d175\" EncodingType=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary\"
+        ValueType=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3\"
+        xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">MIID8TCCAtmgAwIBAgIEAVl8HjANBgkqhkiG9w0BAQUFADBrMQswCQYDVQQGEwJTRTEeMBwGA1UEChMVTm9yZGVhIEJhbmsgQUIgKHB1YmwpMSYwJAYDVQQDEx1Ob3JkZWEgQ29ycG9yYXRlIFNlcnZlciBDQSAwMTEUMBIGA1UEBRMLNTE2NDA2LTAxMjAwHhcNMTIwODE2MDgxMTU5WhcNMTQwODE2MDgxMTU5WjB+MQswCQYDVQQGEwJTRTEeMBwGA1UECgwVTm9yZGVhIEJhbmsgQUIgKHB1YmwpMSowKAYDVQQLDCFOZXRiYW5raW5nICYgSW50ZWdyYXRpb24gU2VydmljZXMxIzAhBgNVBAMMGkZpbGUgVHJhbnNmZXIgV2ViIFNlcnZpY2VzMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGJqLvjTiaM+yotCeskYoeP/c2EF0/xJi07v1J8RuAr1Mu2NU6tel3OsUTmmwVY+GSxsCi6gk+1KvLVPgWmqErDahVryHw3mnFlrrklXcITtUaw7OBa+xrj3sSSBOoneRanqWFH2tlDj1raVBEQJTxx3mjIoawPIHfS/w8DI9utQIDAQABo4IBDDCCAQgwCQYDVR0TBAIwADARBgNVHQ4ECgQISvFVB9v7eZowEwYDVR0jBAwwCoAIRMeT2dl7VsEwNwYIKwYBBQUHAQEEKzApMCcGCCsGAQUFBzABhhtodHRwOi8vb2NzcC5ub3JkZWEuc2UvU0NBMDEwDgYDVR0PAQH/BAQDAgWgMIGJBgNVHR8EgYEwfzB9oHugeYZ3bGRhcDovL2xkYXAubmIuc2UvY249Tm9yZGVhJTIwQ29ycG9yYXRlJTIwU2VydmVyJTIwQ0ElMjAwMSxvPU5vcmRlYSUyMEJhbmslMjBBQiUyMChwdWJsKSxjPVNFP2NlcnRpZmljYXRlcmV2b2NhdGlvbmxpc3QwDQYJKoZIhvcNAQEFBQADggEBAIZbzaxoJUVGCPMKQseFs7E+g//HZbed1ZNVQ8vRy/+L7ieIWKczLWrMvHZd8Gp+84QAC5dKrHD+BsWBUp5VLnVWH6f6EGzSHdaV9FCMRqHDzMzdfpavRYHm+vtF3k+bxt2f6znPmo0bYBtRjuvuLX0MLnnLaabTJ3p2aspAIZ4QXC7XPTG1RXVdbNUVROYWuviPkF4VUrdHMHQrwzHV40mVZ0JDJDIuNELMELdR37lyt0k6NBOorQEbDiqOZvdf5G4Vr0IpgS2Q/zorOUkcKkdJx8rQ9ygUmeFGhd8U3BWsMzkJd8kkKeaNME/K9aTotrTh2iTOZgrOIo83AhoNfZw=</wsse:BinarySecurityToken><Signature
+        xmlns=\"http://www.w3.org/2000/09/xmldsig#\">\n<SignedInfo>\n  <CanonicalizationMethod
+        Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\"/>\n  <SignatureMethod
+        Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\"/>\n  <Reference URI=\"#Timestamp-fb5edeff-1bef-4269-bd08-2bc930fc75e5\">\n
+        \   <Transforms>\n      <Transform Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\"/>\n
+        \   </Transforms>\n    <DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\"/>\n
+        \   <DigestValue>Vs9rX8LHm8QHMfnSJD4mE3nl2c0=</DigestValue>\n  </Reference>\n
+        \ <Reference URI=\"#Body-846afd31-380d-40b6-93ab-c8ae9487706d\">\n    <Transforms>\n
+        \     <Transform Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\"/>\n
+        \   </Transforms>\n    <DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\"/>\n
+        \   <DigestValue>eFrak+lGyrBI1fANKNDYxymyTwY=</DigestValue>\n  </Reference>\n</SignedInfo>\n
+        \   <SignatureValue>clRYdoz1+0zxW90frrlmpri6xHd0CBj9PZRY5wJxT4O86rxseU22nzVcYxWXpYnzz/bNlIyWzdI3hNzywlCcQb5q1inggvW5O8AxE9b7vkXBquMpmlBCBEkJIQ43a9p4qAIX2lmXHfNa83KuLsVc3NVFGX0/VyQHPMkjlQNPXoY=</SignatureValue><KeyInfo><wsse:SecurityTokenReference
+        xmlns=\"\"><wsse:Reference URI=\"#SecurityToken-89cc9d30-1aff-4fcf-ac11-f6bc95b6d175\"
+        ValueType=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3\"/></wsse:SecurityTokenReference></KeyInfo></Signature></wsse:Security></soapenv:Header><soapenv:Body
+        wsu:Id=\"Body-846afd31-380d-40b6-93ab-c8ae9487706d\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"><cor:downloadFileout><mod:ResponseHeader><mod:SenderId>11111111</mod:SenderId><mod:RequestId>1348760293</mod:RequestId><mod:Timestamp>2012-09-27T17:38:14+02:00</mod:Timestamp><mod:ResponseCode>29</mod:ResponseCode><mod:ResponseText>Invalid
+        parameters: At least one FileReference required for downloading</mod:ResponseText><mod:ReceiverId>123456789</mod:ReceiverId></mod:ResponseHeader><mod:ApplicationResponse>PGMyYjpBcHBsaWNhdGlvblJlc3BvbnNlIHhtbG5zOmMyYj0iaHR0cDovL2J4ZC5maS94bWxkYXRhLyI+PGMyYjpDdXN0b21lcklkPjAwMTExMTExMTE8L2MyYjpDdXN0b21lcklkPjxjMmI6VGltZXN0YW1wPjIwMTItMDktMjdUMTc6Mzg6MTQrMDI6MDA8L2MyYjpUaW1lc3RhbXA+PGMyYjpSZXNwb25zZUNvZGU+Mjk8L2MyYjpSZXNwb25zZUNvZGU+PGMyYjpSZXNwb25zZVRleHQ+SW52YWxpZCBwYXJhbWV0ZXJzOiBBdCBsZWFzdCBvbmUgRmlsZVJlZmVyZW5jZSByZXF1aXJlZCBmb3IgZG93bmxvYWRpbmc8L2MyYjpSZXNwb25zZVRleHQ+PGMyYjpFbmNyeXB0ZWQ+ZmFsc2U8L2MyYjpFbmNyeXB0ZWQ+PGMyYjpDb21wcmVzc2VkPmZhbHNlPC9jMmI6Q29tcHJlc3NlZD48U2lnbmF0dXJlIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjIj4KPFNpZ25lZEluZm8+CiAgPENhbm9uaWNhbGl6YXRpb25NZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy14bWwtYzE0bi0yMDAxMDMxNSIvPgogIDxTaWduYXR1cmVNZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjcnNhLXNoYTEiLz4KICA8UmVmZXJlbmNlIFVSST0iIj4KICAgIDxUcmFuc2Zvcm1zPgogICAgICA8VHJhbnNmb3JtIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI2VudmVsb3BlZC1zaWduYXR1cmUiLz4KICAgICAgPFRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLXhtbC1jMTRuLTIwMDEwMzE1Ii8+CiAgICA8L1RyYW5zZm9ybXM+CiAgICA8RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI3NoYTEiLz4KICAgIDxEaWdlc3RWYWx1ZT41UWZuZ2lad2l3bXJlemV2N1RCSVkxRzV2dGM9PC9EaWdlc3RWYWx1ZT4KICA8L1JlZmVyZW5jZT4KPC9TaWduZWRJbmZvPgogICAgPFNpZ25hdHVyZVZhbHVlPlhzWlU0Q0EyV1dncWFFaEpvK1EwSE5yQm8wU3I5b0RRZ3cyYkdKY2ZpM1k3VHR0ZUtBVjIrc1hvSURmQkE5YnNVSGRURDQvVDdlV1FIMFhBaldheFhGOEVPTWRYcDVaemtacWY4cy8zeXNsMXJFRlVXbG5KRXB2b215cVBUb2JCVWYrYlp6SUJzdWJHd2FzcHF6VVFWOWJlZ0gvQS9ZTFR5Q1hlR1hYakNtMD08L1NpZ25hdHVyZVZhbHVlPjxLZXlJbmZvPjxYNTA5RGF0YT48WDUwOUNlcnRpZmljYXRlPk1JSUQ4VENDQXRtZ0F3SUJBZ0lFQVZsOEhqQU5CZ2txaGtpRzl3MEJBUVVGQURCck1Rc3dDUVlEVlFRR0V3SlRSVEVlTUJ3R0ExVUVDaE1WVG05eVpHVmhJRUpoYm1zZ1FVSWdLSEIxWW13cE1TWXdKQVlEVlFRREV4MU9iM0prWldFZ1EyOXljRzl5WVhSbElGTmxjblpsY2lCRFFTQXdNVEVVTUJJR0ExVUVCUk1MTlRFMk5EQTJMVEF4TWpBd0hoY05NVEl3T0RFMk1EZ3hNVFU1V2hjTk1UUXdPREUyTURneE1UVTVXakIrTVFzd0NRWURWUVFHRXdKVFJURWVNQndHQTFVRUNnd1ZUbTl5WkdWaElFSmhibXNnUVVJZ0tIQjFZbXdwTVNvd0tBWURWUVFMRENGT1pYUmlZVzVyYVc1bklDWWdTVzUwWldkeVlYUnBiMjRnVTJWeWRtbGpaWE14SXpBaEJnTlZCQU1NR2tacGJHVWdWSEpoYm5ObVpYSWdWMlZpSUZObGNuWnBZMlZ6TUlHZk1BMEdDU3FHU0liM0RRRUJBUVVBQTRHTkFEQ0JpUUtCZ1FDR0pxTHZqVGlhTSt5b3RDZXNrWW9lUC9jMkVGMC94SmkwN3YxSjhSdUFyMU11Mk5VNnRlbDNPc1VUbW13VlkrR1N4c0NpNmdrKzFLdkxWUGdXbXFFckRhaFZyeUh3M21uRmxycmtsWGNJVHRVYXc3T0JhK3hyajNzU1NCT29uZVJhbnFXRkgydGxEajFyYVZCRVFKVHh4M21qSW9hd1BJSGZTL3c4REk5dXRRSURBUUFCbzRJQkREQ0NBUWd3Q1FZRFZSMFRCQUl3QURBUkJnTlZIUTRFQ2dRSVN2RlZCOXY3ZVpvd0V3WURWUjBqQkF3d0NvQUlSTWVUMmRsN1ZzRXdOd1lJS3dZQkJRVUhBUUVFS3pBcE1DY0dDQ3NHQVFVRkJ6QUJoaHRvZEhSd09pOHZiMk56Y0M1dWIzSmtaV0V1YzJVdlUwTkJNREV3RGdZRFZSMFBBUUgvQkFRREFnV2dNSUdKQmdOVkhSOEVnWUV3ZnpCOW9IdWdlWVozYkdSaGNEb3ZMMnhrWVhBdWJtSXVjMlV2WTI0OVRtOXlaR1ZoSlRJd1EyOXljRzl5WVhSbEpUSXdVMlZ5ZG1WeUpUSXdRMEVsTWpBd01TeHZQVTV2Y21SbFlTVXlNRUpoYm1zbE1qQkJRaVV5TUNod2RXSnNLU3hqUFZORlAyTmxjblJwWm1sallYUmxjbVYyYjJOaGRHbHZibXhwYzNRd0RRWUpLb1pJaHZjTkFRRUZCUUFEZ2dFQkFJWmJ6YXhvSlVWR0NQTUtRc2VGczdFK2cvL0haYmVkMVpOVlE4dlJ5LytMN2llSVdLY3pMV3JNdkhaZDhHcCs4NFFBQzVkS3JIRCtCc1dCVXA1VkxuVldINmY2RUd6U0hkYVY5RkNNUnFIRHpNemRmcGF2UllIbSt2dEYzaytieHQyZjZ6blBtbzBiWUJ0Ump1dnVMWDBNTG5uTGFhYlRKM3AyYXNwQUlaNFFYQzdYUFRHMVJYVmRiTlVWUk9ZV3V2aVBrRjRWVXJkSE1IUXJ3ekhWNDBtVlowSkRKREl1TkVMTUVMZFIzN2x5dDBrNk5CT29yUUViRGlxT1p2ZGY1RzRWcjBJcGdTMlEvem9yT1VrY0trZEp4OHJROXlnVW1lRkdoZDhVM0JXc016a0pkOGtrS2VhTk1FL0s5YVRvdHJUaDJpVE9aZ3JPSW84M0Fob05mWnc9PC9YNTA5Q2VydGlmaWNhdGU+PFg1MDlJc3N1ZXJTZXJpYWw+PFg1MDlJc3N1ZXJOYW1lPnNlcmlhbE51bWJlcj01MTY0MDYtMDEyMCwgQ049Tm9yZGVhIENvcnBvcmF0ZSBTZXJ2ZXIgQ0EgMDEsIE89Tm9yZGVhIEJhbmsgQUIgKHB1YmwpLCBDPVNFPC9YNTA5SXNzdWVyTmFtZT48WDUwOVNlcmlhbE51bWJlcj4yMjY0MTY5NDwvWDUwOVNlcmlhbE51bWJlcj48L1g1MDlJc3N1ZXJTZXJpYWw+PC9YNTA5RGF0YT48L0tleUluZm8+PC9TaWduYXR1cmU+PC9jMmI6QXBwbGljYXRpb25SZXNwb25zZT4=</mod:ApplicationResponse></cor:downloadFileout></soapenv:Body></soapenv:Envelope>"
+    http_version: '1.1'
+  recorded_at: Thu, 27 Sep 2012 15:38:15 GMT
+recorded_with: VCR 2.2.2

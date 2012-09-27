@@ -8,11 +8,7 @@ describe Nordea::FileTransfer::Client do
     Nordea::FileTransfer::Client.new(
       :cert_file        => cert_file,
       :private_key_file => cert_file,
-      :sender_id        => 11111111,
-      :language         => "EN",
-      :environment      => "PRODUCTION",
-      :user_agent       => "Ruby",
-      :software_id      => "Ruby"
+      :sender_id        => 11111111
     )
   end
 

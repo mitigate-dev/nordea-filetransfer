@@ -1,15 +1,14 @@
 module Nordea
   module FileTransfer
-    class Client < Savon::Client
-      attr_reader :cert_file, :private_key_file, :private_key_password
-      attr_reader :sender_id, :receiver_id, :customer_id, :language, :user_agent, :environment, :software_id
+    class Client
+      include Config
 
       def initialize(options = {})
         options.each do |key, value|
-          instance_variable_set("@#{key}", value)
+          send("#{key}=", value || Nordea::FileTransfer.config.send(key))
         end
 
-        super do |wsdl, http|
+        @savon_client = Savon::Client.new do |wsdl, http, wsse|
           # Do not fetch wsdl document, use namespace and endpoint instead.
           wsdl.document = "https://filetransfer.nordea.com/services/CorporateFileService?wsdl"
           wsdl.endpoint = "https://filetransfer.nordea.com/services/CorporateFileService"
@@ -34,7 +33,7 @@ module Nordea
       # * :get_user_info,
       # * :upload_file
       def request(action)
-        response = super action do
+        response = @savon_client.request action do
           soap.namespaces["xmlns"]      = "http://model.bxd.fi"
           soap.namespaces["xmlns:xsns"] = "http://bxd.fi/CorporateFileService"
 

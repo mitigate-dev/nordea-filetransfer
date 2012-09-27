@@ -7,6 +7,7 @@ require 'nordea/file_transfer/version'
 
 module Nordea
   module FileTransfer
+    autoload :Config,              'nordea/file_transfer/config'
     autoload :Client,              'nordea/file_transfer/client'
     autoload :Error,               'nordea/file_transfer/error'
     autoload :Attributes,          'nordea/file_transfer/attributes'
@@ -21,5 +22,7 @@ module Nordea
     autoload :FileTypeService,     'nordea/file_transfer/file_type_service'
     autoload :UserFileType,        'nordea/file_transfer/user_file_type'
     autoload :FileDescriptor,      'nordea/file_transfer/file_descriptor'
+
+    extend Config
   end
 end
