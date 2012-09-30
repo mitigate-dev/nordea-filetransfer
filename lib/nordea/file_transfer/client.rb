@@ -18,6 +18,24 @@ module Nordea
         end
       end
 
+      def get_user_info(&block)
+        request :get_user_info, &block
+      end
+
+      def download_file_list(&block)
+        request :download_file_list, &block
+      end
+
+      def download_file(&block)
+        request :download_file, &block
+      end
+
+      def upload_file(&block)
+        request :upload_file, &block
+      end
+
+      private
+
       def cert
         OpenSSL::X509::Certificate.new(File.read(cert_file))
       end

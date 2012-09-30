@@ -50,7 +50,7 @@ end
 
 client = Nordea::FileTransfer::Client.new
 
-response = client.request :get_user_info do |header, request|
+response = client.get_user_info do |header, request|
   header.receiver_id  = 123456789
   request.customer_id = 162355330
 end
@@ -68,7 +68,7 @@ response.application_response
 > authorized user file types and service ID’s.
 
 ```ruby
-response = client.request :get_user_info do |header, request|
+response = client.get_user_info do |header, request|
   header.receiver_id  = 123456789
   request.customer_id = 162355330,
 end
@@ -83,7 +83,7 @@ response.application_response.user_file_types
 > files that are available for download from Nordea.
 
 ```ruby
-response = client.request :download_file_list do |header, request|
+response = client.download_file_list do |header, request|
   header.receiver_id  = 123456789
   request.customer_id = 162355330
   request.status      = "ALL"
@@ -106,7 +106,7 @@ response.application_response.file_descriptors
 > - download all files
 
 ```ruby
-response = client.request :download_file do |header, request|
+response = client.download_file do |header, request|
   header.receiver_id      = 123456789
   request.customer_id     = 162355330
   request.file_references = ["2012082621423418"]
@@ -134,7 +134,7 @@ response.application_response.content
 > the result must be retrieved with a new call later.
 
 ```ruby
-response = client.request :upload_file do |header, request|
+response = client.upload_file do |header, request|
   header.receiver_id      = 123456789
   request.customer_id     = 162355330
   request.target_id       = "11111111A1"

@@ -19,7 +19,7 @@ describe Nordea::FileTransfer::Client do
   describe "GetUserInfo" do
     it "should send a request and return response" do
       response = VCR.use_cassette('get_user_info') do
-        client.request :get_user_info do |header, request|
+        client.get_user_info do |header, request|
           header.receiver_id  = 123456789
           request.customer_id = 162355330
         end
@@ -34,7 +34,7 @@ describe Nordea::FileTransfer::Client do
   describe "DownloadFileList" do
     it "should send a request and return response" do
       response = VCR.use_cassette('download_file_list') do
-        client.request :download_file_list do |header, request|
+        client.download_file_list do |header, request|
           header.receiver_id  = 123456789
           request.customer_id = 162355330
           request.status      = "ALL"
@@ -50,7 +50,7 @@ describe Nordea::FileTransfer::Client do
     # http://www.nordea.fi/sitemod/upload/root/fi_org/liite/e/yritys/pdf/kurssi_aineisto.pdf
     it "send a request and return response with exchange rates" do
       response = VCR.use_cassette('download_file') do
-        client.request :download_file do |header, request|
+        client.download_file do |header, request|
           header.receiver_id      = 123456789
           request.customer_id     = 162355330
           request.file_references = ["1320120312210394"]
@@ -65,7 +65,7 @@ describe Nordea::FileTransfer::Client do
     it "should raise error #29 when file references are not present" do
       lambda {
         response = VCR.use_cassette('download_file_error') do
-          client.request :download_file do |header, request|
+          client.download_file do |header, request|
             header.receiver_id      = 123456789
             request.customer_id     = 162355330
             request.target_id       = "11111111A1"
@@ -85,7 +85,7 @@ describe Nordea::FileTransfer::Client do
     it "should upload file and return status OK" do
       pending "Couldn't find a good test case"
       response = VCR.use_cassette('upload_file') do
-        response = client.request :upload_file do |header, request|
+        response = client.upload_file do |header, request|
           header.receiver_id      = 11111111
           request.customer_id     = 679155330
           request.target_id       = "11111111A1"
@@ -103,7 +103,7 @@ describe Nordea::FileTransfer::Client do
     it "should raise error #23 when ServiceId is not present" do
       lambda {
         response = VCR.use_cassette('upload_file_error') do
-          response = client.request :upload_file do |header, request|
+          response = client.upload_file do |header, request|
             header.receiver_id      = 123456789
             request.customer_id     = 162355330
             request.target_id       = "11111111A1"
