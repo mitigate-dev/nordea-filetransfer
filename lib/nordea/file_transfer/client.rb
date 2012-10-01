@@ -18,18 +18,47 @@ module Nordea
         end
       end
 
+      # Get User Info
+      #
+      # The service will provide the client with information of
+      # authorized user file types and service ID’s.
       def get_user_info(&block)
         request :get_user_info, &block
       end
 
+      # Download File List
+      #
+      # The service will provide the client with a list of
+      # files that are available for download from Nordea.
       def download_file_list(&block)
         request :download_file_list, &block
       end
 
+      # Download File
+      #
+      # The service will provide the client with requested files.
+      # Downloadable files can be checked by DownloadFileList –service.
+      #
+      # The query may be:
+      #
+      # * download single file
+      # * download multiple files
+      # * download all files of type
+      # * download all files
       def download_file(&block)
         request :download_file, &block
       end
 
+      # Upload File
+      #
+      # The Service will provide the transport of the customers file to Nordea.
+      # The response from Nordea will  be a transport acknowledgement with details
+      # regarding the status of the transport.
+      # 
+      # Backend system will process the files in batch mode. This means that the only
+      # verification of a file transfer, successful or not, will be a transfer
+      # acknowledgement. The client will not usually receive any other notification and
+      # the result must be retrieved with a new call later.
       def upload_file(&block)
         request :upload_file, &block
       end
@@ -44,12 +73,6 @@ module Nordea
         OpenSSL::PKey::RSA.new(File.read(private_key_file), private_key_password)
       end
 
-      # Actions:
-      # * :delete_file,
-      # * :download_file,
-      # * :download_file_list,
-      # * :get_user_info,
-      # * :upload_file
       def request(action)
         response = @savon_client.request action do
           soap.namespaces["xmlns"]      = "http://model.bxd.fi"
