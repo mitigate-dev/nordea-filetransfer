@@ -1,3 +1,5 @@
+require "securerandom"
+
 module Nordea
   module FileTransfer
     class Client
@@ -86,7 +88,7 @@ module Nordea
 
           req.request_header = RequestHeader.new
           req.request_header.sender_id   = sender_id
-          req.request_header.request_id  = timestamp.to_i
+          req.request_header.request_id  = SecureRandom.hex(32)
           req.request_header.timestamp   = timestamp
           req.request_header.language    = language
           req.request_header.user_agent  = user_agent
