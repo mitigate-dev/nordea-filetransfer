@@ -54,7 +54,7 @@ module Nordea
         signer.cert = options[:cert]
         signer.private_key = options[:private_key]
         signer.security_node = signer.document.root
-        signer.digest!(signer.document, :id => "")
+        signer.digest!(signer.document, :id => "", :enveloped => true)
         signer.sign!(:issuer_serial => true)
         signer.canonicalize
       end

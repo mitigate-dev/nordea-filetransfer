@@ -26,5 +26,5 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "activesupport", ">= 3.0"
   gem.add_runtime_dependency "savon", "~> 1.0.0"
   gem.add_runtime_dependency "virtus", "~> 0.5.1"
-  gem.add_runtime_dependency "signer", "~> 1.1.0"
+  gem.add_runtime_dependency "signer", "~> 1.1.1"
 end
