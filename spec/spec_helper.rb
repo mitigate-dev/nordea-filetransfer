@@ -6,7 +6,9 @@ require "vcr"
 require "simplecov"
 require "awesome_print"
 
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/vendor/bundle/'
+end
 
 VCR.configure do |c|
   c.cassette_library_dir = "spec/cassettes"

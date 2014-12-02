@@ -1,0 +1,4 @@
+general:
+  artifacts:
+    - coverage
+    - tmp/capybara
