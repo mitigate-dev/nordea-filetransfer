@@ -36,7 +36,7 @@ $ gem install nordea-filetransfer
 ## Usage
 
 ```ruby
-require "noredea/file_transfer"
+require "nordea/file_transfer"
 
 Nordea::FileTransfer.configure do |config|
   config.language = "EN"
